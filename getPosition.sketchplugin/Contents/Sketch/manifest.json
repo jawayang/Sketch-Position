@@ -3,7 +3,7 @@
   "homepage": "http://jamestw.logdown.com",
   "commands" : [
     {
-      "script" : "script.cocoascript",
+      "script" : "getPosition.cocoascript",
       "handler" : "onRun",
       "shortcut": "alt + command + p",
       "name" : "getPosition",
