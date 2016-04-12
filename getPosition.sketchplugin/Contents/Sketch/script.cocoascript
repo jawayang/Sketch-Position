@@ -1,0 +1,47 @@
+var onRun = function(context) {
+  
+/* jshint ignore:start */
+
+var onRun = function(context) {
+  var selection = context.selection
+
+  var bigger;
+  var allLayers = [];
+
+  for (var i = 0; i < [selection count]; i++) {
+
+	var layer = [selection objectAtIndex:i]
+
+	if(!bigger){
+		bigger = layer;
+	}else{
+		if([[bigger frame] width] < [[layer frame] width]){
+			bigger = layer;
+		}
+	}
+
+	var obj = {
+		layer : layer,
+		width : [[layer frame] width],
+		height : [[layer frame] height],
+		x : [[layer frame] x],
+		y : [[layer frame] y]
+	}
+
+    // [[layer frame] setWidth:Math.round([[layer frame] width])]
+    // [[layer frame] setHeight:Math.round([[layer frame] height])]
+    // [[layer frame] setX:Math.round([[layer frame] x])]
+    // [[layer frame] setY:Math.round([[layer frame] y])]
+
+	allLayers.push(obj);
+
+  }
+
+	log(allLayers);
+	log(bigger);
+
+}
+
+/* jshint ignore:end */
+
+};

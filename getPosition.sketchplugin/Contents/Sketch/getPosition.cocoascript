@@ -1,0 +1,42 @@
+var onRun = function(context) {
+
+	var doc = context.document;
+	var selectedLayers = context.selection;
+	var selectedCount = selectedLayers.count();
+	var firstLayer = selectedLayers.firstObject();
+    var scriptPath = context.scriptPath;
+    var directory = [scriptPath stringByDeletingLastPathComponent] + "/";
+
+	if (selectedCount == 0) {
+		doc.displayMessage('No layer selected');
+	} else {
+        returnCSS(getPosition(firstLayer));
+	}
+
+	function getPosition(layer){
+		var position = {};
+		position.width = Math.round([[layer frame] width]*10)/10+"px;"
+		position.height = Math.round([[layer frame] height]*10)/10+"px;"
+		position.top = Math.round([[layer frame] y]*10)/10+"px;"
+		position.left = Math.round([[layer frame] x]*10)/10+"px;"
+		return position;
+	}
+
+	function returnCSS(position){
+		var cssString = JSON.stringify(position);
+		showMessage(cssString +" , click cmd⌘ + v to paste it.");
+		var css = cssString.replace(/(\u0022,)|\u0022/g,"").replace(/{|}/g,"").replace(/;/g,";\r\n\t").replace(/\r\n\t$/g,"")); // can't use \" for regExp \u0022 instend.
+	    return copy_text("\t"+css);
+	}
+
+    function showMessage(text){
+        [doc showMessage:text];
+    }
+
+    function copy_text(txt){
+      var pasteBoard = [NSPasteboard generalPasteboard]
+      [pasteBoard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil]
+      [pasteBoard setString:txt forType:NSPasteboardTypeString]
+    }
+
+};

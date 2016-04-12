@@ -1,0 +1,24 @@
+{
+  "author" : "James Yang",
+  "homepage": "http://jamestw.logdown.com",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "handler" : "onRun",
+      "shortcut": "alt + command + p",
+      "name" : "getPosition",
+      "identifier" : "getposition"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "getposition"
+    ],
+    "title" : "getPosition"
+  },
+  "identifier" : "com.example.sketch.6ad0a86c-c75a-428e-a665-638fb77cb3be",
+  "version" : "0.1",
+  "description" : "get poistion and size css code for layer",
+  "authorEmail" : "jawa.yang@gmail.com",
+  "name" : "getPosition"
+}
