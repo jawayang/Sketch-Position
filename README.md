@@ -7,5 +7,5 @@
 press `alt ⌥` + `command ⌘` + `p`
 will get css code 
 and then press `command`+'v'
-past the code where you want.
+paste the code where you want.
 
